@@ -61,9 +61,21 @@ namespace MyHamburgercim
             yeniSiparis.Adet = Convert.ToInt32(numericUpDownAdet.Value);
 
             yeniSiparis.Hesapla();
-
+            yeniSiparis.ToString();
             Form1.sepetSiparisler.Add(yeniSiparis);
-            
+            for (int i = Form1.sepetSiparisler.Count-1; i > Form1.sepetSiparisler.Count-2; i--)
+            {
+                listBoxSepet.Items.Add(Form1.sepetSiparisler[i]);
+            }
+
+
+            //foreach (var siparis in Form1.sepetSiparisler)
+            //{
+            //    listBoxSepet.Items.Clear();
+            //    listBoxSepet.Items.Add(siparis);
+            //}
+
+
         }
     }
 }

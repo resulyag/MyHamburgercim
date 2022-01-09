@@ -19,18 +19,25 @@ namespace MyHamburgercim
 
         private void btnEkle_Click(object sender, EventArgs e)
         {
-            var result = MessageBox.Show(@"İşlem tamamlansın mı ?", @"Uyarı",
-                                MessageBoxButtons.OKCancel,
-                                MessageBoxIcon.Question);
-
-            if (result.Equals(DialogResult.OK))
+            if (txtExtraAdi.Text == String.Empty)
             {
-                Extra yeniExtra = new Extra();
-                yeniExtra.ExtraAdi = txtExtraAdi.Text;
-                yeniExtra.ExtraFiyati = (decimal)numericUpDownExtraFiyati.Value;
-                Form1.extralar.Add(yeniExtra);
-                MessageBox.Show("Extra malzemelere ' " + yeniExtra.ExtraAdi + " ' Eklendi");
-                this.Hide();
+                errorProvider1.SetError(txtExtraAdi, "Lütfen extra ismini giriniz!!!");
+            }
+            else
+            {
+                var result = MessageBox.Show(@"İşlem tamamlansın mı ?", @"Uyarı",
+                                    MessageBoxButtons.OKCancel,
+                                    MessageBoxIcon.Question);
+
+                if (result.Equals(DialogResult.OK))
+                {
+                    Extra yeniExtra = new Extra();
+                    yeniExtra.ExtraAdi = txtExtraAdi.Text;
+                    yeniExtra.ExtraFiyati = (decimal)numericUpDownExtraFiyati.Value;
+                    Form1.extralar.Add(yeniExtra);
+                    MessageBox.Show("Extra malzemelere ' " + yeniExtra.ExtraAdi + " ' Eklendi");
+                    this.Hide();
+                }
             }
 
 

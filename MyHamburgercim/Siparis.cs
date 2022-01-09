@@ -38,12 +38,12 @@ namespace MyHamburgercim
             this.Menu.MenuFiyati *=this.Adet;
 
         }
-        //public override string ToString()
-        //{
-        //    var Goster = this.Menu.MenuAdi + ", " + this.Adet + " Adet, " + this.Boyut + " Boy, ( " +   this.Extra.+" )";
+        public override string ToString()
+        {
+            return  this.Menu.MenuAdi + ", " + this.Adet + " Adet, " + this.Boyut + " Boy, " + this.Menu.MenuFiyati + " TL";
 
-        //    return "";
-        //}
+            
+        }
         //private void ExtraBas()
         //{
         //    foreach (var extra in this.Extra)

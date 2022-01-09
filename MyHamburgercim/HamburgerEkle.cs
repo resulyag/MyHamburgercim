@@ -19,19 +19,26 @@ namespace MyHamburgercim
 
         private void btnEkle_Click(object sender, EventArgs e)
         {
-            var result = MessageBox.Show(@"İşlem tamamlansın mı ?", @"Uyarı",
-                    MessageBoxButtons.OKCancel,
-                    MessageBoxIcon.Question);
-
-            if (result.Equals(DialogResult.OK))
+            if (txtHamburgerAdi.Text == String.Empty)
             {
-                Menu yeniHamburger = new Menu();
-                yeniHamburger.MenuAdi = txtHamburgerAdi.Text;
-                yeniHamburger.MenuFiyati = (Decimal)numericUpDownHamburgerFiyati.Value;
-                Form1.menuler.Add(yeniHamburger);
-                MessageBox.Show("Menüye '" + yeniHamburger.MenuAdi + "' Eklendi");
-                this.Hide();
-            }  
+                errorProvider1.SetError(txtHamburgerAdi, "Lütfen hamburger ismini giriniz!!!");
+            }
+            else
+            {
+                var result = MessageBox.Show(@"İşlem tamamlansın mı ?", @"Uyarı",
+                        MessageBoxButtons.OKCancel,
+                        MessageBoxIcon.Question);
+
+                if (result.Equals(DialogResult.OK))
+                {
+                    Menu yeniHamburger = new Menu();
+                    yeniHamburger.MenuAdi = txtHamburgerAdi.Text;
+                    yeniHamburger.MenuFiyati = (Decimal)numericUpDownHamburgerFiyati.Value;
+                    Form1.menuler.Add(yeniHamburger);
+                    MessageBox.Show("Menüye '" + yeniHamburger.MenuAdi + "' Eklendi");
+                    this.Hide();
+                }
+            }
         }
     }
 }
