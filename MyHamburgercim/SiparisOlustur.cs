@@ -19,16 +19,27 @@ namespace MyHamburgercim
 
         private void SiparisOlustur_Load(object sender, EventArgs e)
         {
-            cmBoxMenu.DataSource = Form1.menuler;
-            cmBoxMenu.DisplayMember = "MenuAdi";
+            CmBoxMenuDoldur();
+            ExtralarDoldur();
+            ListBoxSepetDoldur();
+            ToplamFiyatHesapla();
 
+        }
+
+        public void ExtralarDoldur()
+        {
             foreach (var extra in Form1.extralar)
             {
                 CheckBox checkBox = new CheckBox();
                 checkBox.Text = extra.ExtraAdi;
                 flowLayoutPanel1.Controls.Add(checkBox);
             }
+        }
 
+        public void CmBoxMenuDoldur()
+        {
+            cmBoxMenu.DataSource = Form1.menuler;
+            cmBoxMenu.DisplayMember = "MenuAdi";
         }
 
         private void btnSiparisEkle_Click(object sender, EventArgs e)
@@ -61,21 +72,46 @@ namespace MyHamburgercim
             yeniSiparis.Adet = Convert.ToInt32(numericUpDownAdet.Value);
 
             yeniSiparis.Hesapla();
-            yeniSiparis.ToString();
             Form1.sepetSiparisler.Add(yeniSiparis);
-            for (int i = Form1.sepetSiparisler.Count-1; i > Form1.sepetSiparisler.Count-2; i--)
+
+            ListBoxSepetDoldur();
+            ToplamFiyatHesapla();
+
+            Fonksiyon.Temizle(this.Controls);
+        }
+        public void ListBoxSepetDoldur()
+        {
+            listBoxSepet.Items.Clear();
+            foreach (var siparis in Form1.sepetSiparisler)
             {
-                listBoxSepet.Items.Add(Form1.sepetSiparisler[i]);
+                listBoxSepet.Items.Add(siparis.ToString());
             }
+        }
+        public decimal ToplamFiyatHesapla()
+        {
+            txtToplamFiyat.Text = "";
+            decimal toplamFiyat = 0;
+            foreach (var siparis in Form1.sepetSiparisler)
+            {
+                toplamFiyat += siparis.ToplamFiyat;
+            }
+            txtToplamFiyat.Text = toplamFiyat.ToString("C2");
+            return toplamFiyat;
+        }
 
-
-            //foreach (var siparis in Form1.sepetSiparisler)
-            //{
-            //    listBoxSepet.Items.Clear();
-            //    listBoxSepet.Items.Add(siparis);
-            //}
-
-
+        private void btnSiparisiTamamla_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("Toplam sipariş ücreti : " + ToplamFiyatHesapla().ToString("C2") + " Satın almayı tamamlamak istiyor musunuz ? ", "Sipariş Bilgisi", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            if (dr == DialogResult.Yes)
+            {
+                foreach (var siparis in Form1.sepetSiparisler)
+                {
+                    Form1.onaylananSiparisler.Add(siparis);
+                }
+                Form1.sepetSiparisler.Clear();
+                listBoxSepet.Items.Clear();
+                MessageBox.Show("Siparişiniz Tamamlanmıştır!!!");
+            }
         }
     }
 }

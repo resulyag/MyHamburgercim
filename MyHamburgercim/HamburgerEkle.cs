@@ -16,7 +16,6 @@ namespace MyHamburgercim
         {
             InitializeComponent();
         }
-
         private void btnEkle_Click(object sender, EventArgs e)
         {
             if (txtHamburgerAdi.Text == String.Empty)
@@ -36,7 +35,7 @@ namespace MyHamburgercim
                     yeniHamburger.MenuFiyati = (Decimal)numericUpDownHamburgerFiyati.Value;
                     Form1.menuler.Add(yeniHamburger);
                     MessageBox.Show("Menüye '" + yeniHamburger.MenuAdi + "' Eklendi");
-                    this.Hide();
+                    Fonksiyon.Temizle(this.Controls);
                 }
             }
         }

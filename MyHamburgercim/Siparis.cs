@@ -12,45 +12,35 @@ namespace MyHamburgercim
         public Boyut Boyut { get; set; }
         public List<Extra> Extra { get; set; }
         public int Adet { get; set; }
+        public decimal ToplamFiyat { get; set; }
 
         public void Hesapla()
         {
+            // gelen sepet siparişin seçilen bilgilere göre fiyatı düzenleniyor
+
+            ToplamFiyat = Menu.MenuFiyati;
+
             switch (Boyut)
             {
                 case Boyut.Orta:
-                    this.Menu.MenuFiyati += 3;
+                    ToplamFiyat += 3;
                     break;
                 case Boyut.Buyuk:
-                    this.Menu.MenuFiyati += 5;
+                    ToplamFiyat += 5;
                     break;
             }
 
-            //switch (Extra)
-            //{
-            //    case 
-            //        break;
-            //}
             foreach (var extra in this.Extra)
             {
-                this.Menu.MenuFiyati += extra.ExtraFiyati;
+                ToplamFiyat += extra.ExtraFiyati;
             }
 
-            this.Menu.MenuFiyati *=this.Adet;
+            ToplamFiyat *=this.Adet;
 
         }
         public override string ToString()
         {
-            return  this.Menu.MenuAdi + ", " + this.Adet + " Adet, " + this.Boyut + " Boy, " + this.Menu.MenuFiyati + " TL";
-
-            
+            return  this.Menu.MenuAdi + ", " + this.Adet + " Adet, " + this.Boyut + " Boy, " + ToplamFiyat + " TL";
         }
-        //private void ExtraBas()
-        //{
-        //    foreach (var extra in this.Extra)
-        //    {
-        //        extra.ExtraAdi
-        //    }
-        //}
-
     }
 }

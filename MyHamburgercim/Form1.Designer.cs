@@ -71,6 +71,7 @@
             this.siparişBilgileriToolStripMenuItem.Name = "siparişBilgileriToolStripMenuItem";
             this.siparişBilgileriToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
             this.siparişBilgileriToolStripMenuItem.Text = "Sipariş Bilgileri";
+            this.siparişBilgileriToolStripMenuItem.Click += new System.EventHandler(this.siparişBilgileriToolStripMenuItem_Click);
             // 
             // ürünYönetimiToolStripMenuItem
             // 

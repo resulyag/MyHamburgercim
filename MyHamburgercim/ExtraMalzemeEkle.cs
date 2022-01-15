@@ -36,7 +36,7 @@ namespace MyHamburgercim
                     yeniExtra.ExtraFiyati = (decimal)numericUpDownExtraFiyati.Value;
                     Form1.extralar.Add(yeniExtra);
                     MessageBox.Show("Extra malzemelere ' " + yeniExtra.ExtraAdi + " ' Eklendi");
-                    this.Hide();
+                    Fonksiyon.Temizle(this.Controls);
                 }
             }
 

@@ -44,6 +44,7 @@ namespace MyHamburgercim
             }
         };
         public static List<Siparis> sepetSiparisler = new List<Siparis>();
+        public static List<Siparis> onaylananSiparisler = new List<Siparis>();
 
 
         private void siparişOluşturToolStripMenuItem_Click(object sender, EventArgs e)
@@ -68,6 +69,14 @@ namespace MyHamburgercim
             extraMalzemeEkle.MdiParent = this;
             extraMalzemeEkle.Dock = DockStyle.Fill;
             extraMalzemeEkle.Show();
+        }
+
+        private void siparişBilgileriToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SiparisBilgileri siparisBilgileri = new SiparisBilgileri();
+            siparisBilgileri.MdiParent = this;
+            siparisBilgileri.Dock = DockStyle.Fill;
+            siparisBilgileri.Show();
         }
     }
 }

@@ -10,5 +10,9 @@ namespace MyHamburgercim
     {
         public string MenuAdi { get; set; }
         public decimal MenuFiyati { get; set; }
+        public override string ToString()
+        {
+            return MenuAdi + " Menu";
+        }
     }
 }

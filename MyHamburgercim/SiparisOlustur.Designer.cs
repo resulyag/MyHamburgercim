@@ -180,6 +180,7 @@
             this.btnSiparisiTamamla.TabIndex = 13;
             this.btnSiparisiTamamla.Text = "Siparişi Tamamla";
             this.btnSiparisiTamamla.UseVisualStyleBackColor = true;
+            this.btnSiparisiTamamla.Click += new System.EventHandler(this.btnSiparisiTamamla_Click);
             // 
             // SiparisOlustur
             // 
